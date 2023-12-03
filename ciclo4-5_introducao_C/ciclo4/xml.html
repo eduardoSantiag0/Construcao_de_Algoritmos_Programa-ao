@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>XMLHttpRequest Example</title>
+</head>
+<body>
+  <button onclick="loadData()">Load Data</button>
+  <div id="result">Data will be displayed here.</div>
+
+  <script>
+    function loadData() {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function(){ // Callback com onreadystatechange
+        if (xhr.readyState === 4 && xhr.status === 200) { // 200 = resposta sucedida. 4 == pedido completo
+          var data = xhr.responseText;
+          document.getElementById("result").innerHTML = data; // atualiza a diiv com o dado
+        }
+      };
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true); // Open = Especifica o tipo de request (GET) e de onde (URL) vai buscar (fecth) os dados.
+      xhr.send(); // Envia o pedido para o server
+    }
+  </script>
+</body>
+</html>

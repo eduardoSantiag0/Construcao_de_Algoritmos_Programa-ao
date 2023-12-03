@@ -1,0 +1,5 @@
+/* 
+scanf -> leia
+printf -> escreva
+
+*/
