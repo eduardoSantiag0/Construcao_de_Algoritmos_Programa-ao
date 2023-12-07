@@ -12,15 +12,11 @@ int main (void)
     if (p == NULL) // caso não tenha espaço, retorna erro.
         return 1;
 
-    q = p; //!!!!
+    q = p;
 
     for (i=0;i<30;i++){
         *q = i;
         q++;
-    }
-
-    for (i=0;i<30;i++){
-        p[i]=i;
     }
 
 
@@ -30,13 +26,7 @@ int main (void)
         printf("%d ", p[i]);
     }
 
-    for (i=0;i<30;i++){
-        printf("%d "), *q;
-    }
-
-
     free(p);
-    free(q);
 
     return 0;
 }
