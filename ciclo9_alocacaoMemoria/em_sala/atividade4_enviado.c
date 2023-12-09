@@ -34,7 +34,7 @@ void mallocZerado (int **pMatriz){
 
     for (i = 0; i < LINHA; i++) {
         for (j = 0; j < COLUNA; j++) {
-            printf("%d ", &pMatriz[i][j]); 
+            printf("%p ", &pMatriz[i][j]); 
         }
         printf("\n");
     }
@@ -64,12 +64,12 @@ void callocZerado(int **pMatriz){
 
     for (i = 0; i < LINHA; i++) {
         for (j = 0; j < COLUNA; j++) {
-            printf("%d ", &pMatriz[i][j]); 
+            printf("%p ", &pMatriz[i][j]); 
         }
         printf("\n");
     }
     
-    //* Liberando a memoria alocada
+    //* Liberando a memória alocada
     for (i = 0; i < LINHA; i++) {
         free(pMatriz[i]);
     }
@@ -100,7 +100,7 @@ void usandoMalloc(int **pMatriz){
     //* Imprimindo o endereço de cada elemento da matriz
     for (i = 0; i < LINHA; i++) {
         for (j = 0; j < COLUNA; j++) {
-            printf(" %d ", &pMatriz[i][j]);
+            printf(" %p ", &pMatriz[i][j]);
         }
         printf("\n");
     }
@@ -127,7 +127,7 @@ void usandoCalloc(int **pMatriz){
  
     for (i = 0; i < LINHA; i++) {
         for (j = 0; j < COLUNA; j++) {
-            printf(" %d ", &pMatriz[i][j]);
+            printf(" %p ", &pMatriz[i][j]);
         }
         printf("\n");
     }
@@ -147,25 +147,14 @@ int main (void)
     
     //* Chamando Funções
     printf("\n");
-    printf("\t Endereco do ponteiro --> %d \n\n", &pMatriz);
+    printf("\t Endereco do ponteiro --> %p \n\n", &pMatriz);
     
     printf("\n\n");
 
-    printf("\tUsando Malloc\n");
-    usandoMalloc(pMatriz);
+    // usandoMalloc(pMatriz);
     printf("\n\n");
-    
-    printf("\tUsando Calloc\n");
-    usandoCalloc(pMatriz);
-    printf("\n\n");
-
-    printf("\tUsando Malloc para ver se Apresenta Lixo\n");
     mallocZerado(pMatriz);
-    printf("\n\n");
-
-    printf("\tTestando com Calloc\n");
-    callocZerado(pMatriz);
-
+    // usandoCalloc(pMatriz);
 
     printf("\n\n");
 
@@ -185,3 +174,6 @@ int main (void)
 
     return 0;
 }
+
+
+//! Resultado
