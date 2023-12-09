@@ -59,7 +59,7 @@ int main (void)
     }
 
 
-    //*Imprime o resultado
+    //*Imprime o resultadob
     for (i = 0;i < LINHA * COLUNA;i++){
         printf(" %d ", pMatrix[i]);
     }
