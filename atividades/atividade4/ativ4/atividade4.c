@@ -26,9 +26,8 @@ void mallocZerado (int **pMatriz){
 
     for (i = 0; i < LINHA; i++) {
         for (j = 0; j < COLUNA; j++) {
-            printf("%d ", pMatriz[i][j]); 
+            pMatriz[i][j] = i + j; 
         }
-        printf("\n");
     }
     printf("\n");
 
@@ -57,6 +56,7 @@ void callocZerado(int **pMatriz){
 
     for (i = 0; i < LINHA; i++) {
         for (j = 0; j < COLUNA; j++) {
+<<<<<<< HEAD:ciclo9_alocacaoMemoria/em_sala/ativ4/atividade4.c
             printf("%d ", pMatriz[i][j]);
         }
         printf("\n");
@@ -65,6 +65,9 @@ void callocZerado(int **pMatriz){
     for (i = 0; i < LINHA; i++) {
         for (j = 0; j < COLUNA; j++) {
             printf("%d ", &pMatriz[i][j]); 
+=======
+            printf("%p ", &pMatriz[i][j]); 
+>>>>>>> 9955e820650fbbd78a97ffa3db0027714d40b4c2:atividades/atividade4/ativ4/atividade4.c
         }
         printf("\n");
     }
@@ -151,6 +154,7 @@ int main (void)
     
     printf("\n\n");
 
+<<<<<<< HEAD:ciclo9_alocacaoMemoria/em_sala/ativ4/atividade4.c
     printf("\tUsando Malloc\n");
     usandoMalloc(pMatriz);
     printf("\n\n");
@@ -164,6 +168,18 @@ int main (void)
     printf("\n\n");
 
     printf("\tTestando com Calloc\n");
+=======
+    printf("\t Malloc: \n");
+    usandoMalloc(pMatriz);
+    printf("\n\n");
+    printf("\t Calloc: \n");
+    usandoCalloc(pMatriz);
+    printf("\n\n");
+    printf("\t Malloc Zerado: \n");
+    mallocZerado(pMatriz);
+    printf("\n\n");
+    printf("\t Calloc Zerado: \n");
+>>>>>>> 9955e820650fbbd78a97ffa3db0027714d40b4c2:atividades/atividade4/ativ4/atividade4.c
     callocZerado(pMatriz);
 
 
