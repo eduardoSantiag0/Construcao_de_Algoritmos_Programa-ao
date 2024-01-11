@@ -1,0 +1,4 @@
+Administrador
+Operador de Camera
+Assistente de Fotografia
+Produtor de Set
