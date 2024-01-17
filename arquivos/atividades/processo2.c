@@ -36,16 +36,17 @@ int main(void) {
     char input_nome_arquivo[50];
 
     // Colocar o input no nome do suposto arquivo
-    sprintf(input_nome_arquivo, "%s.bin", user_input);
 
     do {
+        sprintf(input_nome_arquivo, "%s.bin", user_input);
         // Abrir o arquivo
         arquivo_acesso = fopen(input_nome_arquivo, "rb");
 
+        printf("Tentativas (apos 3 erros, o sistema sera travado): %d\n", contador_erros + 1);
         if (arquivo_acesso == NULL) { // username seja o problemma
-            printf("Nome de usuario nao encontrado, digite novamente: ");
+            printf("Nome de usuario nao encontrado, digite novamente: \n");
             scanf("%s", user_input);
-            printf("Por favor, digite a senha novamente: ");
+            printf("Por favor, digite a senha novamente: \n");
             scanf("%s", senha_input);
             contador_erros++;
         } else {
@@ -60,6 +61,9 @@ int main(void) {
                 return 0;
             } else {
                 printf("Senha incorreta, tente novamente.\n");
+                printf("Numero de tentativas restantes: %d\n", contador_erros);
+                printf("Informe a senha: ");
+                scanf("%s", senha_input);  
                 contador_erros++;
             }
         }
