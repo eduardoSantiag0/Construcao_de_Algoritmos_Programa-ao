@@ -63,7 +63,7 @@ int main (void)
 
 
     for (i = 0; i < inputLinha; i++){
-        for (j = 0; j < inputLinha; j++){
+        for (j = 0; j < inputColuna; j++){ //!!!!!!!!!!!!!!!
             printf("Linha: %d e Coluna %d da Primeira Matriz: ", i, j);
             scanf("%d", &array1[i][j]);
             printf("\n");

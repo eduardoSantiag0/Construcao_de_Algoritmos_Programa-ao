@@ -1,4 +1,4 @@
 Administrador
-Operador de Camera
-Assistente de Fotografia
-Produtor de Set
+Operador_de_Camera
+Assistente_de_Fotografia
+Produtor_de_Set

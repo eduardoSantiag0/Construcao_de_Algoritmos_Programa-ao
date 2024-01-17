@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/1Du/Ufscar/cap/arquivos/atividades/substitutiva",
-      "program": "c:/1Du/Ufscar/cap/arquivos/atividades/substitutiva/build/Debug/outDebug",
+      "cwd": "c:/1Du/Ufscar/cap/arquivos",
+      "program": "c:/1Du/Ufscar/cap/arquivos/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
