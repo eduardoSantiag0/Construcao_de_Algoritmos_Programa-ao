@@ -20,7 +20,7 @@ int main (void) {
     int refazerSenha;
     int refazerSenhaMeio;
     char emailInformado[50];
-    char telefoneInformado[50];
+    int telefoneInformado;
     char usernameInformado[50];
     int contadorErros = 0;
     char input_nome_arquivo[50];
@@ -43,20 +43,9 @@ int main (void) {
         return 0;
     }
  
-    printf("Por onde voce deseja redefinir a senha? \n");
-    printf("Digite 1 para Email\n");
-    printf("Digite 2 para Telefone\n");
-    scanf("%d", &refazerSenhaMeio);
 
-
-    // while (refazerSenhaMeio != 1 && refazerSenhaMeio != 2)
-    // {
-    //     printf("Digite 1 (Email) ou 2 (Telefone)\n")/
-    //     scanf("%d", &refazerSenhaMeio);
-    //     /* code */
-    // }
-    
     do {
+        printf("Por onde voce deseja redefinir a senha? \n");
         printf("Digite 1 (Email) ou 2 (Telefone)\n")/
         scanf("%d", &refazerSenhaMeio);
     } while (refazerSenhaMeio != 1 && refazerSenhaMeio != 2); 
@@ -66,38 +55,52 @@ int main (void) {
 
     if (refazerSenhaMeio == 1) // Email
     { 
-        printf("Informe o email que está no cadastro");
+        printf("Informe o email que está no cadastro: \n");
         scanf("%s", emailInformado);
         
         while (strcmp(emailInformado, FUNC.email) != 0 && contadorErros != 3)
         {
-            printf("Email informado nao corresponde ao do cadastro, digite novamente:");
+            printf("Email informado nao corresponde ao do cadastro, digite novamente:\n");
             scanf("%s", emailInformado);
             contadorErros++;
             
         }
-        printf("O email para redefinir a senha sera enviado para %s\n", FUNC.email);
-        printf("Link: https://www.redefinindosenha/passwords/\n");
+
+        if (contadorErros < 3) {
+            printf("O email para redefinir a senha sera enviado para %s\n", FUNC.email);
+            printf("Link: https://www.redefinindosenha/passwords/\n");
+        } else {
+            printf("Numero de tentativas excedidas");
+        }
+
         fclose(arquivo_acesso);
         return 1;
     }
-    if (refazerSenhaMeio == 2) // Email
+
+    if (refazerSenhaMeio == 2) // Celular
     { 
-        printf("Informe o telefone que está no cadastro");
-        scanf("%s", telefoneInformado);
+        printf("Informe o telefone que esta no cadastro: \n");
+        scanf("%d", &telefoneInformado);
+        
         while (telefoneInformado != FUNC.celular && contadorErros != 3)
         {
-            printf("Celular informado nao corresponde ao do cadastro, digite novamente:");
-            scanf("%s", telefoneInformado);
+            printf("Celular informado nao corresponde ao do cadastro, digite novamente: \n");
+            scanf("%d", &telefoneInformado);
             contadorErros++;
         }
-        printf("O email para redefinir a senha sera enviado para %s\n", FUNC.email);
-        printf("Link: https://www.redefinindosenha/passwords/\n");
+
+        if (contadorErros < 3) {
+            printf("O email para redefinir a senha sera enviado para %d\n", FUNC.celular);
+            printf("Link: https://www.redefinindosenha/passwords/\n");
+        } else {
+            printf("Numero de tentativas excedidas");
+        }
+
         fclose(arquivo_acesso);
         return 1;
     }
 
 
     
-    return 1;
+    return 0;
 }

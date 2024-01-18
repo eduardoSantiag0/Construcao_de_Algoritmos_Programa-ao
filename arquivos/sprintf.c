@@ -9,6 +9,7 @@ int main (void) {
     sprintf(nome_completo, "%s_%s", nome, sobrenome);
 
     printf("%s", nome_completo);
+    printf("%s", nome_completo);
 
 
     return 0;
