@@ -42,19 +42,17 @@ int main(void) {
         // Abrir o arquivo
         arquivo_acesso = fopen(input_nome_arquivo, "rb");
 
-        printf("Tentativas (apos 3 erros, o sistema sera travado): %d\n", contador_erros + 1);
         if (arquivo_acesso == NULL) { // username seja o problemma
             printf("Nome de usuario nao encontrado, digite novamente: \n");
             scanf("%s", user_input);
             printf("Por favor, digite a senha novamente: \n");
             scanf("%s", senha_input);
             contador_erros++;
+            
         } else {
             // Ler os dados do arquivo
             fread(&FUNC, sizeof(Usuario), 1, arquivo_acesso);
 
-            // Verificar se a senha no sistema é igual é igual à digitada
-            // 2.147.483.647 de números positivos - 4 bytes => 32bits;
             if (strcmp(senha_input, FUNC.senha) == 0) {
                 printf("Acesso liberado uwu\n");
                 fclose(arquivo_acesso);
