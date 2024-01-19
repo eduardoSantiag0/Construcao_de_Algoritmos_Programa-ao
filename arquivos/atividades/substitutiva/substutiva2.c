@@ -29,7 +29,7 @@ int main() {
     FUNC funcionarios[NUM_FUNCIONARIOS];
 
     // Ler as informações dos arquivos de texto e escreve no arquivo binário
-    printf("\tAdicionando Funcionarios: \n");
+    printf("\tLendo arquivo texxto e Adicionando Funcionarios: \n");
 
     for (i = 0; i < NUM_FUNCIONARIOS; i++) {
         fscanf(nome_arq, "%s", funcionarios[i].nome);
@@ -50,5 +50,24 @@ int main() {
     fclose(arq_binario);
     printf("Arquivo Salvo!\n");
 
+    printf("\n");
+
+    printf("Lendo arquivo binario\n");
+
+    arq_binario = fopen("funcionarios.bin", "rb");
+    if (arq_binario == NULL) {
+        printf("Erro ao abrir o arquivo");
+        return 1;
+    }
+
+    FUNC read_funcioanrios[NUM_FUNCIONARIOS];
+
+    fread(read_funcioanrios, sizeof(FUNC), NUM_FUNCIONARIOS, arq_binario);
+    for (i = 0; i < NUM_FUNCIONARIOS ;i++) 
+    {
+        printf("Nome %s, Matricula: %d, Cargo: %s, Salario: %.2f\n", read_funcioanrios[i].nome, read_funcioanrios[i].matricula, read_funcioanrios[i].cargo, read_funcioanrios[i].salario);
+    }
+
+    fclose(arq_binario);
     return 0;
 }
