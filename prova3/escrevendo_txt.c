@@ -22,22 +22,26 @@ int main (void)
     FILE *arq_texto, *abrir_arquivo, *arq_copia;
 
     arq_texto = fopen("hello_mom.txt", "w");
+    if (arq_texto == NULL) {
+        printf("Erro ao abrir arquivo");
+        return 1;
+    }
 
     char filme[20] = "Bacurau\n";
-    char fput[20] = "fputs here!\n";
 
-    fprintf(arq_texto, "Meu filme favorito: \n", filme);
-    fputs(filme, arq_texto);
+    fprintf(arq_texto, "Meu filme favorito: %s \n", filme);
     fseek(arq_texto, 0, SEEK_END);
     fputs("ou qualquer outro", arq_texto);
-
+    
     fclose(arq_texto);
 
     abrir_arquivo = fopen("hello_mom.txt", "r");
+    if (abrir_arquivo == NULL) {
+        printf("Erro ao abrir arquivo");
+        return 1;
+    }
 
     char buff[50];
-    char getmovie[20];
-
 
 
     printf("Hello buffer\n");
@@ -46,20 +50,36 @@ int main (void)
         printf("%s ", buff);
     }
 
+    fclose(abrir_arquivo);
+
     arq_copia = fopen("copia_bin.bin", "wb+");
+    if (arq_copia == NULL)
+    {
+        printf("Erro");
+        return 1;
+    }
 
 
     // fwrite(&pessoa[i], sizeof (FUNC), 1, arq_funcionarios);
-    fwrite (arq_texto, sizeof(buff), 3, arq_copia);
+    fwrite (arq_texto, sizeof(char), sizeof(buff), arq_copia);
 
-    while (fread(arq_texto, sizeof (char), 1 , arq_copia) == 1)
+
+    while (fread(buff, sizeof(char), sizeof(buff), arq_texto) == sizeof(buff))
     {
+        // Write the content to the binary file
+        fwrite(buff, sizeof(char), sizeof(buff), arq_copia);
+    }
+
+    // Move the file position indicator to the beginning of the binary file
+    fseek(arq_copia, 0, SEEK_SET);
+
+    // Read and print the content of the binary file
+    while (fread(buff, sizeof(char), sizeof(buff), arq_copia) == sizeof(buff))
+    {
+        // Print or manipulate the content as needed
         printf("%s ", buff);
     }
 
-    
-    fclose(arq_texto);
-    fclose(abrir_arquivo);
     fclose(arq_copia);
 
 
